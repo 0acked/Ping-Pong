@@ -32,7 +32,7 @@ function draw(){
 
  fill("black");
  stroke("black");
- rect(680,0,20,700);
+ rect(680,0,350);
 
  fill("black");
  stroke("black");
@@ -69,10 +69,10 @@ function draw(){
 
 
 
-//function reset when ball does notcame in the contact of padde
+//function reset when ball does not come in the contact of padde
 function reset(){
-   ball.x = width/2+100,
-   ball.y = height/2+100;
+   ball.x = width/102,
+   ball.y = height/102;
    ball.dx=3;
    ball.dy =3;
    
