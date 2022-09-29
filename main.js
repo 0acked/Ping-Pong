@@ -1,6 +1,8 @@
 
 /*created by prashant shukla */
-
+RWx = 0;
+RWy = 0;
+RWScore = 0;
 var paddle2 =10,paddle1=10;
 
 var paddle1X = 10,paddle1Height = 110;
@@ -29,6 +31,15 @@ function setup(){
   video.parent("canvas");
   poseNet = ml5.poseNet(video, modelLoaded);
 	poseNet.on("pose", gotPoses);
+  function gotPoses(results){
+    if(results.length > 0)
+    {
+      RWy = results[0].pose.rightWrist.y;
+    RWx = results[0].pose.rightWrist.x;
+    RWScore =  results[0].pose.keypoints[10].score;
+    console.log(scoreRightWrist);
+    }
+  }
 
   function modelLoaded(){
     console.log("Model Loaded!");
@@ -40,7 +51,12 @@ function setup(){
 function draw(){
 
  background(0); 
-
+if(RWScore > 0.2)
+{
+  fill(234,100,255);
+  stroke(001,125,250);
+  circle(300,350,20)
+}
  fill("black");
  stroke("black");
  rect(680,0,350);
